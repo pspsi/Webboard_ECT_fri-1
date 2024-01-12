@@ -12,7 +12,18 @@
 <h1 style="text-align: center;">Webboard</h1>
     <hr>    
     <div style="text-align: center;">
-    <?php echo"ต้องการดูกระทู้หมายเลข  $id" ?>
+    <?php echo"ต้องการดูกระทู้หมายเลข  $id";
+        echo"<BR>";
+        $id = $_GET['id'];
+        $i = $id%2;
+        if ($i==0){
+            echo"เป็นกระทู่หมายเลขคู่";
+        }
+        if ($i==1) {
+            echo"เป็นกระทู่หมายเลขคี่";
+        }
+
+        ?>
     </div>
     <br>
     <div style="text-align: center;">
@@ -20,7 +31,7 @@
     <tr><td colspan="2" style="background-color: #6CD2FE;">เเสดงความคิดเห็น</td></tr>
     <form>
     <tr><td><textarea name='massage' row="10" cols="30">
-        The cat was playing in the garden.
+        
     </textarea></td></tr>
         <br>
         <tr><td><input type="submit" value="ส่งข้อความ"></td></tr>

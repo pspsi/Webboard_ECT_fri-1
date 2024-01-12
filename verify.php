@@ -10,9 +10,28 @@
     <hr>
     <div style="text-align: center;">
     เข้าสู้ระบบด้วย<br>
-    Login = <?php echo $_POST['login']; ?>
-    <?php echo"<BR>" ?>
-    password = <?php echo $_POST['pwd']; ?>
+        <?php
+        $password = $_POST["pwd"];
+        $login = $_POST["login"];
+
+        if($login == "admin" && $password == "ad1234"){
+            echo"ยินดีต้อนรับคุณ ADMIN";     
+            echo"<BR>";
+            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+        }
+        elseif($login == "member"&& $password == "mem1234"){
+            echo"ยินดีต้อนรับคุณ MEMBER";  
+            echo"<BR>";  
+            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+        }
+        else{
+            echo"ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
+            echo"<BR>";
+            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+        }   
+        ?>
+
+    
 </div>
 </body>
 </html>
