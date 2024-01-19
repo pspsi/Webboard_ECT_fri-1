@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +18,26 @@
         $login = $_POST["login"];
 
         if($login == "admin" && $password == "ad1234"){
+            $_SESSION['username']='admin';
+            $_SESSION['role']='a';
+            $_SESSION['id']=session_id();
+
             echo"ยินดีต้อนรับคุณ ADMIN";     
             echo"<BR>";
-            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
         }
         elseif($login == "member"&& $password == "mem1234"){
+            $_SESSION['username']='member';
+            $_SESSION['role']='m';
+            $_SESSION['id']=session_id();
             echo"ยินดีต้อนรับคุณ MEMBER";  
             echo"<BR>";  
-            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
         }
         else{
             echo"ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
             echo"<BR>";
-            echo"<a href=login.html style=float: right;> กลับไปยังหน้าหลัก</a>";
+            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
         }   
         ?>
 

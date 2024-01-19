@@ -24,7 +24,7 @@
         <tr><td colspan="2" align="center"><input type="submit" size="50" value="สมัครสมาชิก"></td></tr>
     </table>
     <br>
-   <div style="text-align: center;"> <a href="index.html">กลับไปยังหน้าหลัก</a></div>
+   <div style="text-align: center;"> <a href="index.php">กลับไปยังหน้าหลัก</a></div>
 </form>
 </body>
 </html>
