@@ -1,47 +1,49 @@
-<?php
+<?php 
 session_start();
+if(isset($_SESSION['id'])){
+    header("location: index.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Verify</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        h1,p,a{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Webboard</h1>;
+    <h1>Webboard KakKak</h1>
     <hr>
-    <div style="text-align: center;">
-    เข้าสู้ระบบด้วย<br>
-        <?php
-        $password = $_POST["pwd"];
-        $login = $_POST["login"];
-
-        if($login == "admin" && $password == "ad1234"){
-            $_SESSION['username']='admin';
-            $_SESSION['role']='a';
-            $_SESSION['id']=session_id();
-
-            echo"ยินดีต้อนรับคุณ ADMIN";     
-            echo"<BR>";
-            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
+    <p>เข้าสู้ระบบด้วย</p>
+    <?php
+        $login=$_POST["user"];
+        $pwd=$_POST["password"];
+        if($login=="admin" && $pwd=="ad1234"){
+            $_SESSION['username'] = 'admin';
+            $_SESSION['role'] = 'a';
+            $_SESSION['id'] = session_id();
+            header("location: index.php");
+        }elseif($login=="member" && $pwd=="mem1234"){
+            $_SESSION['username'] = 'member';
+            $_SESSION['role'] = 'm';
+            $_SESSION['id'] = session_id();
+            header("location: index.php");
+        }else{
+            $_SESSION['error'] = 'error';
+            header("location: login.php");
         }
-        elseif($login == "member"&& $password == "mem1234"){
-            $_SESSION['username']='member';
-            $_SESSION['role']='m';
-            $_SESSION['id']=session_id();
-            echo"ยินดีต้อนรับคุณ MEMBER";  
-            echo"<BR>";  
-            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
-        }
-        else{
-            echo"ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
-            echo"<BR>";
-            echo"<a href=index.php style=float: right;> กลับไปยังหน้าหลัก</a>";
-        }   
-        ?>
-
-    
-</div>
+    ?>
+    <p>Login = <?php echo $_POST['user']; ?></p>
+    <p>Password = <?php echo $_POST['password']; ?></p>
+    <p><a href="index.php">กลับไปหน้าหลัก</a></p>
 </body>
 </html>
