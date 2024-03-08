@@ -17,34 +17,43 @@
     </style>
 </head>
 <body>
-    <h1>Webboard KakKak</h1>
+    <div class="container-lg">
+    <h1 style="text-align: center;" class="mt-3">Webboard KakKak</h1>
+    <php include="nav.php" ?>
+        <div class="row mt-4">
+            <div class="col-lg-3 colmd-2 col-sm-1"></div>
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="card-header bg-success mt-3">
+                    <div class="card-header bg-success text-whitte">
+                        เเสดงความคิดเห็น </div>
+                        <div class ="card-body">
+                            <form accept="post_save.php" method="post">
+                                <input type="hidden" name="post_id"
+                                value="<?= $_GET['id'];?>">
+                                <div class="row mb-3 justify-content-center">
+                                    <div class="col-lg-10">
+                                        <textarea name="comment" rows="8"
+                                        class="form-control"required></textarea>
+                                        <div class="row">
+        <div class="col-lg d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn-sm text-white">
+                <i class="bi bi-box-arrow-up-right"></i>ส่งข้อความ
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm ms-2">
+                <i class="bi bi-x-square"></i>ยกเลิก </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-2 col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+    </php>
     <hr>
-    <?php 
-    $id = ($_GET['id']);
-    $i = $id%2;
-    echo "<p>ต้องการกระทู้หมายเลข $id</p>";
-    if($i==1){
-        echo "<p>เป็นกระทู้หมายเลขคี่";
-    }else{
-        echo "<p>เป็นกระทู้หมายเลขคู่";
-    }
-    
-    ?>
-    <center>
-    <form action="">
-        <table>
-        <tr>
-            <td style="background-color: #6CD2FE; text-align: center;" colspan="2">แสดงความคิดเห็น</td>
-        </tr>
-        <tr>
-            <td><textarea></textarea></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;"><input type="submit" value="ส่งข้อความ"></td>
-        </tr>
-        </table>
-    </form>
-    <p><a href="index.php">กลับไปหน้าหลัก</a></p>
-    </center>
+            </button>
+        </div>
+    </div>
 </body>
 </html>
