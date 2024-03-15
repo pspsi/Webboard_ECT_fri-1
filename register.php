@@ -51,6 +51,12 @@
                         <div class="col-9">
                             <input type="password" id="pwd" name="pwd" class="form-control" require>
                         </div>
+                        <div class="col-2   ">
+                            <label for="pwd" class="col-form-label">ใส่รหัสผ่านซ้ำ : </label>
+                        </div>
+                        <div class="col-9">
+                            <input type="password" id="pwd2" name="pwd" class="form-control"id="pwd2" onblur="OnBlurPwd()" require>
+                        </div>
                         <div class="col-2">
                             <label for="name" class="col-form-label">ชื่อ - นามสกุล : </label>
                         </div>

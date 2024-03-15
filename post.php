@@ -1,4 +1,3 @@
-[12:18 PM] THEPNIMIT MAKASAWAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,22 +18,28 @@
     <div class="row mt-4">
      <div class="col-1g-3 col-md-2 col-sm-1"></div>
     <div class="col-1g-6 col-md-8 col-sm-10">
-   
+    
     <?php
     $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
-    $sql="SELECT post.title,post.content,post.post_date,user.login FROM post INNER JOIN user ON(post.user_id=user.id) WHERE post.id=$_GET[id]";
+    $sql="SELECT post.title,post.content,post.post_date,user.user FROM post INNER JOIN user ON(post.user_id=user.id) WHERE post.id=$_GET[id]";
     $result=$conn->query($sql);
     while($row=$result->fetch()){
- 
      echo"   <div class='card boder-primary'>";
-     echo"    <div class='card-header bg-primary text-white'>$row[title]</div>";
-     echo"<div class='card-body'>$row[content]<br><br>$row[3]-$row[2]</div>";
- 
-       
-       
-    echo"</div>";
+     echo"    <div class='card-header bg-primary text-white'>$row[0]</div>";
+     echo"<div class='card-body'>$row[1]<BR><BR>$row[3] -$row[2]</div>";   
+     echo"</div>";
     }
- 
+    $sql="SELECT comment.content,comment.post_date,user.login
+    FROM comment INNER JOIN user ON
+    (comment.user_id=user.id) WHERE comment.post_id=$_GET[id]";
+    $result=$conn->query($sql);
+    while($row=$result->fetch()){
+     echo"   <div class='card boder-info'>";
+     echo"    <div class='card-header bg-info text-white'>ความคิดเห็นที่ 1</div>";
+     echo"<div class='card-body'>$row[content]<BR><BR>$row[2] -$row[1]</div>";   
+     echo"</div>";
+    }
+
     ?>
     <div class="card border-success mt-3">
         <div class="card-header bg-success text-white">

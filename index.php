@@ -11,6 +11,12 @@ include "conn.php"
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script>
+        function myFunction(){
+            let r=confirm("ต้องการจะลบจริงหรือไม่?");
+            return r;
+        }
+    </script>
     <style>
         body {
             font-family: sans-serif;
@@ -134,7 +140,7 @@ include "conn.php"
                     while($row = $result->fetch()){
                         echo "<tr><td class='col-11'>[$row[0]]<a href=post.php?id=$row[2] style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td>";
                         if (isset($_SESSION['id']) && $_SESSION['role'] == 'a') {
-                            echo "<td class='col-1'><a href='delete.php?id=$row[2]' class='btn btn-danger'>ลบ</a></td></tr>";
+                            echo "<td class='col-1'><a href='delete.php?id=$row[2]' class='btn btn-danger' onclick='return myFunction()'>ลบ</a></td></tr>";
                     }
                 }
                     $conn=null;

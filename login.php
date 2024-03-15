@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -23,44 +23,80 @@ session_start();
     </style>
 </head>
 <body>
-    <h1 class="text-center">Webboard</h1>
-    <div class="container mt-3">
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#home"><i class="bi bi-house-door-fill"></i> Home</a>
-            <form class="d-flex">
-                <a href="login.php" class="navbar-brand"><i class="bi bi-box-arrow-in-left"></i> เข้าสู่ระบบ</a>
-            </form>
-        </div>  
-    </nav><br>
-    <!-- alert -->
-    <?php
-        if(isset($_SESSION["error"])){
-            echo "<div class='container mt-3' style='width: 26.5rem;'><div class='alert alert-danger'><span>ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง</span></div></div>";
-            unset($_SESSION["error"]);
-        }
-    ?>
-    <div class="d-flex justify-content-center">
-        <form action="verify.php" method="POST">
-            <div class="card"  style="width: 25rem;">
-                <div class="card-header text-center">เข้าสู่ระบบ</div>
+<div class="container-lg">
+    <h1 style="text-align: center;" class="m-3">Webboardlnwza007</h1>
+    <?php include "nav.php" ?>
+ 
+    <div class="row mt-4">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-8 col-10">
+            <?php
+                if(isset($_SESSION['error'])){
+                echo "<div class='alert alert-danger'>ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง</div>";
+                unset($_SESSION['error']);
+                }
+            ?>
+            <div class="card bg-light text-dark">
+                <div class="card-header">เข้าสู่ระบบ</div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="user" class="form-label">Login:</label>
-                        <input type="text" name="user" id="user" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd" class="form-label">Password:</label>
-                        <input type="password" id="pwd" class="form-control"name="pwd" placeholder="Password" required>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-secondary m-1">Login</button>
-                    <button type="reset" class="btn btn-secondary m-1">Reset</button>
-                    </div>
+                    <form action="verify.php" method="post">
+                        <div class="form-group">
+                            <label for="login" class="form-label">Login:</label>
+                            <input type="text" name="login" id="login" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="pwd" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control">
+                                <span class="input-group-text" onclick="password_show_hide()">
+                                    <i class="bi bi-eye-fill" id="show_eye"></i>
+                                    <i class="bi bi-eye-slash-fill d-none" id="hide_eye"></i>
+                                </span>
+                            </div>
+                           
+                        </div>
+ 
+                        <div class="d-flex justify-content-center mt-3">
+                           
+                            <input class="btn btn-success btn-sm me-2" type="submit" value="Login">
+                            <input class="btn btn-danger btn-sm" type="reset" value="Reset">
+                           
+                        </div>
+                       
+                           
                 </div>
-            </div><br>
-            <p class="text-center">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a></p>
+                    </form>
+            </div>
         </div>
     </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-1"></div>
+</div>
+    <br>
+    <div style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php" class="btn btn-primary btn-sm">กรุณาสมัครสมาชิก</a> </div>
+</div>
+ 
+<script>
+    function password_show_hide(){
+        let x=document.getElementById("password");
+        let show_eye=document.getElementById("show_eye");
+        let hide_eye=document.getElementById("hide_eye");
+        hide_eye.classList.remove("d-none");
+        if(x.type==="password"){
+            x.type="text";
+            show_eye.style.display="none";
+            hide_eye.style.display="block";
+        }
+        else{
+            x.type="password";
+            show_eye.style.display="block";
+            hide_eye.style.display="none";  
+        }
+ 
+    }    
+</script>
+ 
 </body>
-</html>
+ 
+</html
+has context menu
+
